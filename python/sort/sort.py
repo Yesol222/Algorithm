@@ -7,6 +7,14 @@ def SelectSort(number):
         number[i], number[min_index] = number[min_index],number[i]
     print(number)
 
+def InsertSort(number):
+    for i in range(1,len(number)):
+        for j in range(i,0,-1):
+            if number[j] < number[j-1] :
+                number[j],number[j-1] = number[j-1], number[j]
+            else:
+                break
+    print(number)
 
 def main():
     print("--------------\n")
@@ -21,8 +29,8 @@ def main():
     choice = input("your choice: ")
     if choice == 1 :
         SelectSort(number)
-    # elif choice == 2:
-    #     InsertSort(number)
+    elif choice == 2:
+        InsertSort(number)
 
 
 if __name__ == "__main__":
