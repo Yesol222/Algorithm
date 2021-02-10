@@ -4,9 +4,14 @@
 using namespace std;
 int unf[1001];
 
-int Find(int v){
+int Find1(int v){
     if(v==unf[v]) return v;
     else return Find(unf[v]); //index 와 value가 같지 않는다면 값으로 Find 함수를 호출.
+}
+
+int Find2(int v){
+    if(v==unf[v]) return v;
+    else return unf[v]=Find(unf[v]); // 메모이제이션
 }
 void Union(int a, int b){
     a=Find(a);
@@ -24,8 +29,8 @@ int main(){
         Union(a,b);
     }
     cin>>a>>b;
-    a=Find(a);
-    b=Find(b);
+    a=Find2(a);
+    b=Find2(b);
     if(a==b) cout<<"YES";
     else cout<<"NO";
     return 0;
