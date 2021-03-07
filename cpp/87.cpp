@@ -5,7 +5,7 @@
 
 using namespace std;
 
-vector<vector<int> > map;
+int map[30][30];
 queue<pair<int, int> > Q;
 pair<int, int> point;
 int n;
@@ -24,25 +24,25 @@ int main(){
 
     point = make_pair(0,0);
 
+    //논리적 오류가 너무 많잔아???
+    
     while(point.first<n && point.second<n){
-        if(map[point.first][point.second]==1){
-            Q.push(point);
-            while(!Q.empty()){
-                point = Q.front();
-                Q.pop();
-                if(map[point.first][point.second]==1){
-                    for(int i=0;i<4;i++){
-                        int x = x+dx[i];
-                        int y = y+dy[i];
-                        if(map[x][y]==1){
-                            Q.push(make_pair(x,y));
-                            point=make_pair(x,y);
-                            map[x][y]=0;
-                        }
+        point = Q.front();
+        Q.pop();
+        while(!Q.empty()){
+            if(map[point.first][point.second]==1){
+                for(int i=0;i<4;i++){
+                    int x = x+dx[i];
+                    int y = y+dy[i];
+                    if(map[x][y]==1){
+                        Q.push(make_pair(x,y));
+                        point=make_pair(x,y);
+                        map[x][y]=0;
                     }
                 }
             }
-            cnt++;
+        }
+        cnt++;
         }
         else if(map[point.first][point.second]==0){
                 for(int i=0;i<4;i++){
@@ -53,8 +53,19 @@ int main(){
                         break;
                     }
                 }
+                point=make_pair(n,n);
             }
     }
     printf("%d",&cnt);
     return 0;
 }
+
+
+7                                                                                      
+1100010                                                                                
+0110110                                                                                
+0100000                                                                                
+0001011                                                                                
+1101100                                                                                
+1000100                                                                                
+1010100

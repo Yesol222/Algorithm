@@ -5,7 +5,7 @@
 using namespace std;
 int n, map[30][30], cnt=0;
 int dx[8]={0,1,1,1,0,-1,-1,-1};
-int dy[8]={-1,-1,-1,1,1,0,-1};
+int dy[8]={-1,-1,0,1,1,1,0,-1};
 struct Loc{
     int x;
     int y;
@@ -30,14 +30,14 @@ int main(){
                     for(int i=0;i<8;i++){
                         if(map[tmp.x + dx[i]][tmp.y+dy[i]] == 1){
                             Q.push(Loc(tmp.x+dx[i], tmp.y+dy[i]));
-                            map[tmp.x+dx[i]][tmp.y+dy[i]]] = 0;
+                            map[tmp.x+dx[i]][tmp.y+dy[i]] = 0;
                         }
                     }
                 }
                 cnt++;
             }
         }
-        pritnf("%d",cnt);
+        printf("%d",cnt);
         return 0;
     }
 }
