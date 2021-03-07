@@ -3,19 +3,23 @@
 #include <vector>
 
 using namespace std;
-int n, m;
-int dx[4]={1,0,-1,0};
-int dy[4]={0,1,0,-1};
+int n, m, res;
 vector<pair<int, int> > map[30];
-
-dfs(int s, int L, int sum){
+pair<int, int> pizza[30];
+dfs(int s, int L){
     if(L==m){
-        
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                sum += abs(map[1][i].first-map[2][j].first) + abs(map[1][i].second-map[2][j].second);
+            }
+        }
+        if(res>sum) res=sum;
     }
     else{
-        for(int j=s;j<map[1].size();j++){
-            sum = abs(map[1][s].first-map[2][L].first) + abs(map[1][L].second-map[2][L].second);
-            dfs(j+1,L+1,sum);
+        for(int j=s;j<map[2].size();j++){
+            pizza[j] = map[2][j];
+            dfs(j+1,L+1);
+            pizza[j] = {0,0};
         }
     }
 }
@@ -35,6 +39,6 @@ int main(){
         }
     }
 
-    dfs(0,0,0);
+    dfs(0,0);
     return 0;
 }
