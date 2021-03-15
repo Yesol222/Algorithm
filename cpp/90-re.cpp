@@ -9,7 +9,7 @@ struct State{
     int x, y, dis;
     State(int a, int b, int s){
         x=a;
-        y-b;
+        y=b;
         dis=s;
     }
     bool operator<(const State &bb) const{

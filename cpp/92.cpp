@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 int dy[101];
-
+//top-down
 int dfs(int n){
     if(dy[n]>0) return dy[n];
     if(n==1 || n==2) return n;
